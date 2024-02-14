@@ -2,7 +2,18 @@
 document.addEventListener("DOMContentLoaded", function () {
   //funcion
   eventListeners();
+  //funcion de modo oscuro
+  darkMode()
 });
+
+//funcion de darkmode
+function darkMode() {
+    const botonDarkMode = document.querySelector('.dark-mode-boton')
+
+    botonDarkMode.addEventListener('click', function() {
+        document.body.classList.toggle('dark-mode')
+    })
+}
 
 //funcion de click
 function eventListeners() {
