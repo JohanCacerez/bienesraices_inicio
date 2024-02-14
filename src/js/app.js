@@ -3,16 +3,33 @@ document.addEventListener("DOMContentLoaded", function () {
   //funcion
   eventListeners();
   //funcion de modo oscuro
-  darkMode()
+  darkMode();
 });
 
 //funcion de darkmode
 function darkMode() {
-    const botonDarkMode = document.querySelector('.dark-mode-boton')
+  const prefDarkMode = window.matchMedia("(prefers-color-scheme: dark)");
 
-    botonDarkMode.addEventListener('click', function() {
-        document.body.classList.toggle('dark-mode')
-    })
+  if (prefDarkMode.matches) {
+    document.body.classList.add("dark-mode");
+  } else {
+    document.body.classList.remove("dark-mode");
+  }
+
+  //escucha el cambio del modo oscuro o claro
+  prefDarkMode.addEventListener("change", function () {
+    if (prefDarkMode.matches) {
+      document.body.classList.add("dark-mode");
+    } else {
+      document.body.classList.remove("dark-mode");
+    }
+  });
+
+  const botonDarkMode = document.querySelector(".dark-mode-boton");
+
+  botonDarkMode.addEventListener("click", function () {
+    document.body.classList.toggle("dark-mode");
+  });
 }
 
 //funcion de click
