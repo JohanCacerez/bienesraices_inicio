@@ -1,59 +1,44 @@
-//se Inicia para poder manejar el DOM
-document.addEventListener("DOMContentLoaded", function () {
-  //funcion
-  eventListeners();
-  //funcion de modo oscuro
-  darkMode();
+document.addEventListener('DOMContentLoaded', function() {
+
+    eventListeners();
+
+    darkMode();
 });
 
-//funcion de darkmode
 function darkMode() {
-  const prefDarkMode = window.matchMedia("(prefers-color-scheme: dark)");
 
-  if (prefDarkMode.matches) {
-    document.body.classList.add("dark-mode");
-  } else {
-    document.body.classList.remove("dark-mode");
-  }
+    const prefiereDarkMode = window.matchMedia('(prefers-color-scheme: dark)');
 
-  //escucha el cambio del modo oscuro o claro
-  prefDarkMode.addEventListener("change", function () {
-    if (prefDarkMode.matches) {
-      document.body.classList.add("dark-mode");
+    // console.log(prefiereDarkMode.matches);
+
+    if(prefiereDarkMode.matches) {
+        document.body.classList.add('dark-mode');
     } else {
-      document.body.classList.remove("dark-mode");
+        document.body.classList.remove('dark-mode');
     }
-  });
 
-  const botonDarkMode = document.querySelector(".dark-mode-boton");
+    prefiereDarkMode.addEventListener('change', function() {
+        if(prefiereDarkMode.matches) {
+            document.body.classList.add('dark-mode');
+        } else {
+            document.body.classList.remove('dark-mode');
+        }
+    });
 
-  botonDarkMode.addEventListener("click", function () {
-    document.body.classList.toggle("dark-mode");
-  });
+    const botonDarkMode = document.querySelector('.dark-mode-boton');
+    botonDarkMode.addEventListener('click', function() {
+        document.body.classList.toggle('dark-mode');
+    });
 }
 
-//funcion de click
 function eventListeners() {
-  //se selcciona el componente que tendra dicha funcion
-  const mobileMenu = document.querySelector(".mobile-menu");
+    const mobileMenu = document.querySelector('.mobile-menu');
 
-  //accion de la funcion al dar click
-  mobileMenu.addEventListener("click", navegacionResponsiva);
+    mobileMenu.addEventListener('click', navegacionResponsive);
 }
 
-//funcion
-function navegacionResponsiva() {
-  //manipular css
-  const navegacion = document.querySelector(".navegacion");
+function navegacionResponsive() {
+    const navegacion = document.querySelector('.navegacion');
 
-  //evaluar si tiene o no la clase para agregarla o quitarla
-  if (navegacion.classList.contains("mostrar")) {
-    navegacion.classList.remove("mostrar");
-  } else {
-    navegacion.classList.add("mostrar");
-  }
-
-  /* Tambien se puede hacer de esta manera la comprobacion
     navegacion.classList.toggle('mostrar')
-    */
 }
